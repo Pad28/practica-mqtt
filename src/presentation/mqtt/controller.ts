@@ -11,7 +11,7 @@ export class MqttController {
     public async listen() {
         this.broker.on("ready", () => {
             console.log(`Broker MQTT en puerto ${this.broker.opts.port}`);
-            // this.broker.on("clientConnected", (client: mosca.Client) => console.log(client.id));
+            this.broker.on("clientConnected", (client: mosca.Client) => console.log(client.id));
 
             this.broker.on("published", (packet, client) => {
                 if(packet.topic === Events.LED_SEND) {

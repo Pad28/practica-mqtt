@@ -10,7 +10,7 @@ export class SocketController {
 
     public async listen() {
         this.socketServer.on("connection", (socket) => {
-            // console.log(socket.id);
+            console.log("Socket client:", socket.id);
 
             socket.on(Events.LED_SET, async(payload) => {
                 const pub = mqtt.connect(this.mqttUrl);
